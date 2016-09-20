@@ -1,0 +1,35 @@
+---
+title: "HUDK5053 - Twitter"
+author: "Charles Lang"
+date: "September 19, 2016"
+output: html_document
+---
+
+```{r}
+library(ROAuth)
+library(twitteR)
+
+api_key <- 
+
+api_secret <- 
+
+access_token <- 
+
+access_token_secret <- 
+
+setup_twitter_oauth(api_key, api_secret, access_token, access_token_secret)
+```
+
+#Download Tweets
+```{r}
+TL <- searchTwitter("educational data mining", n=50, since='2016-09-12', until='2016-09-20')
+TL <- do.call("rbind", lapply(TL, as.data.frame))
+```
+
+```{r}
+counts=table(TL$screenName)
+barplot(counts, las=2)
+
+#By time of day
+hist(TL$created, breaks = "d")
+```
