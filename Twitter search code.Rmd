@@ -22,7 +22,7 @@ setup_twitter_oauth(api_key, api_secret, access_token, access_token_secret)
 
 #Download Tweets
 ```{r}
-TL <- searchTwitter("educational data mining", n=50, since='2016-09-12', until='2016-09-20')
+TL <- searchTwitter("educational data mining", n=50, since='2017-10-01', until='2016-10-08')
 TL <- do.call("rbind", lapply(TL, as.data.frame))
 ```
 
