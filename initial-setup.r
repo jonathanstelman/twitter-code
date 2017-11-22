@@ -7,7 +7,10 @@ access_token <- '799339669527953408-rmOnUIlw7uy17CXHw0sXwhJg85oi5we'
 access_token_secret <- 'jpTd35sR6fm4j1GYyUBPGZc9UYAHjXXCk1eXD9AEPXr3o'
 setup_twitter_oauth(api_key, api_secret, access_token, access_token_secret)
 
-query <- 'educational analyst'
+start_date = as.character(Sys.Date() - 7)
+end_date = as.character(Sys.Date())
+query = 'education+data'
 
 #Download Tweets
-TL <- searchTwitter(query, n=0, since='2017-11-15', until='2017-11-21')
+results <- searchTwitter(query, n=100, since=start_date, until=end_date)
+results <- do.call("rbind", lapply(results, as.data.frame))
