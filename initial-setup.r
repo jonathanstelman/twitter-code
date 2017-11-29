@@ -1,5 +1,7 @@
 library(ROAuth)
 library(twitteR)
+library(dplyr)
+library(tidyr)
 
 api_key <- 'xfweW6pW0xotKQzfkocM7xj0p'
 api_secret <-'VquI5RIJ5LgBUI5EeBgtYyBgn5QsejxIcr4XrCRk0HhzC51lu1'
@@ -14,3 +16,6 @@ query = 'education+data'
 #Download Tweets
 results <- searchTwitter(query, n=100, since=start_date, until=end_date)
 results <- do.call("rbind", lapply(results, as.data.frame))
+
+#Export Data
+save(results,file="saved_tweets.Rda")
